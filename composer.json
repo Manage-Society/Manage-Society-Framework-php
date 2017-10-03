@@ -1,0 +1,11 @@
+{
+    "name": "vendor/cycyframework",
+    "description": "framework",
+    "authors": [
+        {
+            "name": "dfqsfqs",
+            "email": "dfdsfsq@fdfd.fr"
+        }
+    ],
+    "require": {}
+}

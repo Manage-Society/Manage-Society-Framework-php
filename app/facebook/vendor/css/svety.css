@@ -1,0 +1,20 @@
+
+.images{
+  height: 200px;
+}
+.ecris{
+  color: #b71c1c;
+}
+.colors {
+  color: #c62828;
+}
+.taille {
+  font-size: 80px;
+}
+
+.color {
+  background-color: #bbdefb;
+}
+.rouge {
+  color: rgb(198, 32, 37);
+}
