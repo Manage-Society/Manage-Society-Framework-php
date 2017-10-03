@@ -1,5 +1,5 @@
 <?php
-
+//Fdsfds
 // Affiche les erreurs
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
