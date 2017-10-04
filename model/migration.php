@@ -30,13 +30,14 @@ class migration{
    * [On appel le model pour avoir la table et base de donnee]
    * @param [class] $sql [La classe qui recoit de mysql par exemple]
    */
-  public function __construct($sql){
+  public function __construct($sql=null){
+    if(!is_null($sql)){
     $class_sql=$sql;
     $this->sql=$class_sql;
     $this->datatable=$class_sql->datatable;
     $this->table=$class_sql->table;
 
-
+}
 
   }
 

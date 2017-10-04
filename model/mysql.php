@@ -1,13 +1,16 @@
 <?php
-namespace core\model;
+namespace ms\model;
 
 /**
  * Connexion MySQL
  */
-class mysql extends \app\core\model\sql{
+class mysql extends \ms\model\sql{
 
+public $app;
 
-  public function __construct($datable){
+  public function __construct($datable=null){
+    $this->app=$GLOBALS["app"];
+    if($datable=="") $datable=$this->app->config->get("db_datatable");
     $this->conect($datable);
   }
 
@@ -17,10 +20,9 @@ class mysql extends \app\core\model\sql{
  * @return [connecteur]          [retourn un conecteur]
  */
   public function conect($datable){
-    $var= new \app\core\config("/datauser/vendor/config.php");
- $this->hostname=$_SESSION["ip_bd"]=$var->get("db_hostname");
-     $this->username=$_SESSION["bd_username"]=$var->get("db_username");
-    $this->password=$_SESSION["bd_psswd"]=$var->get("db_mdp");
+ $this->hostname=$_SESSION["ip_bd"]=$this->app->config->get("db_hostname");
+     $this->username=$_SESSION["bd_username"]=$this->app->config->get("db_username");
+    $this->password=$_SESSION["bd_psswd"]=$this->app->config->get("db_mdp");
     $this->datatable=$_SESSION["datatable"]=$datable;
 
     parent::con();

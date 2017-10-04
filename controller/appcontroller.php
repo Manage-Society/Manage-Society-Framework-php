@@ -47,6 +47,8 @@ class appcontroller{
 
         public $session;
 
+        public $migration;
+
 
  /**
   * Le constructeur
@@ -63,6 +65,7 @@ class appcontroller{
 $this->html=new \ms\view\html();
 $this->recup=new \ms\view\recupval();
 $this->tel= new \ms\controller\tel();
+$this->migration= new \ms\model\migration();
 $var=$this->config= new \ms\controller\config($chemin);
 
 $this->route=new \ms\view\route($var);

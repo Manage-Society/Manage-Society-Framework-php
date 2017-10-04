@@ -1,5 +1,5 @@
 <?php
-namespace core\model;
+namespace ms\model;
 
 //INFO: SGBD signifie Gestionnaire de base de donnée
 
