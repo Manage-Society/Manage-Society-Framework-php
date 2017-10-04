@@ -5,48 +5,37 @@ namespace ms\view;
  * Traite les informations de la vue au controller
  */
 class recupval extends \ms\view\html{
-  public $app;
+
+  public $server;
+  public $getGET;
+  public $getPOST;
 
   public function __construct(){
-
+    $this->server=$_SERVER;
+    $this->recup();
   }
 
-/**
- * Ajout automatique dinformation de type add
- * @param [type] $model     [description]
- * @param [type] $condition [description]
- */
-  public function add_sql($model,$condition=null,$cas=null,$valeur=null){
-    $this->app=$GLOBALS["app"];
-  if($condition=="") $condition="add_";
-  $caso=$cas;
-  $valeuro=$valeur;
-  if($cas!="")  $caso =",".$cas;
-    if($valeur!="")  $valeuro =','.$valeur;
+  /**
+   * Recupere les variables POST et GET envoye
+   * @return [type] [description]
+   */
+  public function recup(){
+    $htmlo= new \ms\view\html();
+    $l_donnee=array();
+    foreach ($_POST as $nomchamp => $valeurchamp){
+        $$nomchamp = $htmlo->verif_val($valeurchamp,'text');
+          $l_rep=$htmlo->verif_val($valeurchamp,'text');
+      $l_donnee=array_merge($l_donnee,array($nomchamp=>$l_rep));
+    }
+    $this->getPOST=$l_donnee;
 
-    $reponse= $this->app->recup->add($_POST,$condition);
-    $lavalfinal=explode("!!!!!!",$reponse);
-    $leschamps=$lavalfinal[0];
-    $lesvariables=$lavalfinal[1];
-    $lastid= $this->app->getmodel($model)->ajout(array(
-    "cas"=>" $leschamps $caso ",
-    "valeur"=>" $lesvariables $valeuro ",
-    ));
-    return $lastid;
-  }
-
-  public function update_sql($model,$requete,$condition=null,$cas=null){
-    $this->app=$GLOBALS["app"];
-    if($condition=="") $condition="mod_";
-    $caso=$cas;
-    if($cas!="") $caso .=",".$cas;
-    $reponse= $this->app->recup->mod($_POST,$condition);
-    $lavalfinal=explode("!!!!!!",$reponse);
-    $leschamps=$lavalfinal[0];
-    $this->app->getmodel($model)->miseajour(array(
-    "valeur"=>" $leschamps $caso ",
-    "cas"=>" $requete ",
-    ));
+    $l_donnee=array();
+    foreach ($_GET as $nomchamp => $valeurchamp){
+        $$nomchamp = $htmlo->verif_val($valeurchamp,'text');
+          $l_rep=$htmlo->verif_val($valeurchamp,'text');
+      $l_donnee=array_merge($l_donnee,array($nomchamp=>$l_rep));
+    }
+    $this->getGET=$l_donnee;
   }
 
 	public static function mod($POST,$valspec=null){
@@ -125,7 +114,7 @@ $laval="'".$valeurchamp."'";
 
   public function verif_val($data,$type){
 
-  	 include_once(''.$_SERVER['DOCUMENT_ROOT'].'/managesociety/framework/vendor/verif.php');
+  	 include_once(''.$_SERVER['DOCUMENT_ROOT'].'/vendor/call/verif.php');
   if($data==''){return '';}else{
   	 $rep = GetSQLValueString($data, ''.$type.'');
   	 $rep  = substr($rep, 0, -1);
@@ -163,6 +152,7 @@ $lareq=" ".substr($nomchamp,$taille)."='".$valeurchamp."'  ";
  }
 
 		}
+    if($lareq=="") $lareq=" (1=1) ";
 	return $lareq;
 	}
 
