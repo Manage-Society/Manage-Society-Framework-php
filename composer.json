@@ -1,6 +1,10 @@
 {
     "name": "managesociety/framework",
+    "type": "framework",
     "description": "Framework développé par Manage-Society.com",
+    "keywords": ["php", "Manage-Society", "framework", "Cyriaque ovaga"],
+    "homepage": "https://github.com/Manage-Society/Manage-Society-Framework-php",
+    "license": "Manage-Society;COM",
     "authors": [
         {
             "name": "Manage-Society",
