@@ -1,5 +1,5 @@
 <?php
-namespace app\core\controller;
+namespace core\controller;
 
 /**
  * Charge une classe
