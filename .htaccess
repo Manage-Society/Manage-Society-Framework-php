@@ -1,5 +1,0 @@
-Options +FollowSymlinks
-RewriteEngine On
-RewriteRule ^inc/.*$ index.php
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php [QSA,L]

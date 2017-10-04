@@ -1,10 +1,10 @@
 {
-    "name": "vendor/cycyframework",
-    "description": "framework",
+    "name": "cyfr/core",
+    "description": "Framework développé par Manage-Society.com",
     "authors": [
         {
-            "name": "dfqsfqs",
-            "email": "dfdsfsq@fdfd.fr"
+            "name": "Manage-Society",
+            "email": "contact@manage-society.com"
         }
     ],
     "require": {}
