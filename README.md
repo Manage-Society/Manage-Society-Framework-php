@@ -40,4 +40,4 @@ $app->route->send();<br>
 Pour utiliser la base de donnée, vous devez change les paramètre de
 votre base de donnee dans le fichier: app/home/asset/config.php <br>
 Specialement db_hostname, db_username,db_mdp ,db_datatable. <br>
-Vous devez creer la base de donné db_datatable à travers votre SGBD
+Vous devez creer la base de donné db_datatable qui par defaut est managesociety à travers votre SGBD
