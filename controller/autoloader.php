@@ -1,5 +1,5 @@
 <?php
-namespace core\controller;
+namespace ms\controller;
 
 /**
  * Charge une classe
@@ -21,13 +21,20 @@ class autoloader{
 
 $class = ''.str_replace('\\', '/', $class);
 
+
 if(is_file('' . $class . '.php')){
 
    require '' . $class . '.php';
 
 }else {
 
-  if(is_file('../' . $class . '.php')) require '../' . $class . '.php';
+  if(is_file('../' . $class . '.php')){
+    require '../' . $class . '.php';
+  } else{
+    $class=str_replace("ms","",$class);
+    $class="vendor/managesociety/framework".$class;
+    require '' . $class . '.php';
+  }
 
 }
 

@@ -1,5 +1,5 @@
 <?php
-namespace core;
+namespace ms\controller;
 
 /**
  * Telecharge un fichier

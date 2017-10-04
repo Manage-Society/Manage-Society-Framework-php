@@ -1,4 +1,4 @@
-<?php namespace core;
+<?php namespace ms\controller;
 
 class config{
 
@@ -22,10 +22,10 @@ class config{
     }
 
 	public function __construct($chemin=null){
-    // if($chemin=="") $chemin="/core/vendor/config.php";
+		
+if($chemin!="") if(is_file(''.$chemin))
+		$this->settings= require ''.$chemin;
 
-if($chemin!="") if(is_file(dirname(__DIR__).''.$chemin))
-		$this->settings= require dirname(__DIR__).''.$chemin;
 	}
 
 	    public  function get($key)

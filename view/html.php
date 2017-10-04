@@ -1,8 +1,8 @@
 <?php
-namespace core\model;
+namespace ms\view;
 
 /**
- * Gere toutes les informations avec la vue
+ * Gere toutes les informations de la vue
  */
 class html {
 
@@ -30,6 +30,13 @@ public $mysqli;
  * @param string $type [le type de la variable]
  */
    public function GetSqlValue($data,$type){
+  $ip_bd="127.0.0.1";
+  $bd_username="";
+  $bd_psswd="";
+
+  if(isset($_SESSION["ip_bd"]))$ip_bd=$_SESSION["ip_bd"];
+  if(isset($_SESSION["bd_username"]))$bd_username=$_SESSION["bd_username"];
+  if(isset($_SESSION["bd_psswd"]))$bd_psswd=$_SESSION["bd_psswd"];
 
      if(isset($_SESSION["ip_bd"])){
 
@@ -37,7 +44,7 @@ public $mysqli;
          $data = get_magic_quotes_gpc() ? stripslashes($data) : $data;
        }
        if($this->mysqli==""){
-            $this->mysqli=$mysqli = new \mysqli($_SESSION["ip_bd"], $_SESSION["bd_username"], $_SESSION["bd_psswd"]);
+            $this->mysqli=$mysqli = new \mysqli($ip_bd,$bd_username, $bd_psswd);
        }else{
          $mysqli=$this->mysqli;
        }
@@ -83,7 +90,7 @@ public $mysqli;
 		 $nom="infoerror";
 		 $cle="Huxi";
 		 $description='<div class="alert alert-'.$type.'" style="padding:5px 5px 5px 5px">'.$message.'</div>';
-		$session = new \app\core\model\session();
+		$session = new \ms\view\session();
   if($publie=="")  $session->session("infoerror","",$description);
 		return $description;
 	}
@@ -98,7 +105,7 @@ public $mysqli;
     $nom="infoerror";
     $cle="Huxi";
     $description='<div class="alert alert-'.$type.'" style="padding:5px 5px 5px 5px">'.$message.'</div>';
-   $session = new \app\core\model\session();
+   $session = new \ms\view\session();
    $session->session("infoerror","",$description);
    return $description;
  }

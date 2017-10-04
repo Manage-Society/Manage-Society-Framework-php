@@ -1,10 +1,10 @@
 <?php
-namespace core\model;
+namespace ms\controller;
 
 /**
  * Gere les sessions
  */
-class session extends \app\core\model\crypte {
+class session extends \ms\model\crypte {
 
 
 /**
@@ -50,7 +50,7 @@ public function goback($lien=null){
     $lastlink=$lien;
   }
 
-  \app\core\model\route::header($lastlink);
+  \ms\model\route::header($lastlink);
 }
 
 

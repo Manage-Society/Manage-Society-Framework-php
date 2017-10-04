@@ -1,10 +1,10 @@
 <?php
-namespace core;
+namespace ms\view;
 
 /**
  * Traite les informations de la vue au controller
  */
-class recupval extends \app\core\model\html{
+class recupval extends \ms\view\html{
   public $app;
 
   public function __construct(){
@@ -55,7 +55,7 @@ class recupval extends \app\core\model\html{
 
 		$leretour="";
 		$lareq=$laval="";
-		$htmlgo= new \app\core\model\html();
+		$htmlgo= new \ms\view\html();
 		foreach ($POST as $nomchamp => $valeurchamp){
 
 	 $$nomchamp = $htmlgo->verif_val($valeurchamp,'text');
@@ -91,7 +91,7 @@ class recupval extends \app\core\model\html{
 		$leretour="";
 		$lareq=$laval="";
 
-$htmlgo= new \app\core\model\html();
+$htmlgo= new \ms\view\html();
 
 		foreach ($POST as $nomchamp => $valeurchamp){
 
@@ -125,7 +125,7 @@ $laval="'".$valeurchamp."'";
 
   public function verif_val($data,$type){
 
-  	 include_once(''.$_SERVER['DOCUMENT_ROOT'].'/vendor/call/verif.php');
+  	 include_once(''.$_SERVER['DOCUMENT_ROOT'].'/managesociety/framework/vendor/verif.php');
   if($data==''){return '';}else{
   	 $rep = GetSQLValueString($data, ''.$type.'');
   	 $rep  = substr($rep, 0, -1);
@@ -140,7 +140,7 @@ $laval="'".$valeurchamp."'";
 		$taille=strlen($valspec);
 		$leretour="";
 		$lareq="";
-		$htmlgo= new \app\core\model\html();
+		$htmlgo= new \ms\view\html();
 		foreach ($POST as $nomchamp => $valeurchamp){
 
 	 $$nomchamp = $htmlgo->verif_val($valeurchamp,'text');
@@ -173,7 +173,7 @@ $lareq=" ".substr($nomchamp,$taille)."='".$valeurchamp."'  ";
 		$taille=strlen($valspec);
 		$leretour="";
 		$lareq="";
-		$htmlgo= new \app\core\model\html();
+		$htmlgo= new \ms\view\html();
 		foreach ($POST as $nomchamp => $valeurchamp){
 
 	 $$nomchamp = $htmlgo->verif_val($valeurchamp,'text');
@@ -199,7 +199,7 @@ $lareq=" ".substr($nomchamp,$taille)." LIKE '%$valeurchamp%'  ";
 	public static function list_rech($POST){
 		$leretour="";
 		$lareq="";
-		$htmlgo= new \app\core\model\html();
+		$htmlgo= new \ms\view\html();
 		foreach ($POST as $nomchamp => $valeurchamp){
 
 	 $$nomchamp = $htmlgo->verif_val($valeurchamp,'text');

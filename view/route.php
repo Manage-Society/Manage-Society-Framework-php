@@ -1,17 +1,18 @@
 <?php
-namespace core;
+namespace ms\view;
 
 /**
  * Gere les vues
  */
-class view
+class route
 {
 
   public $body;
-  public $layout;
+  public $config;
 
-  function __construct()
+  function __construct($config)
   {
+    $this->config=$config;
     # code...
   }
 
@@ -23,6 +24,7 @@ class view
    */
   public function render($doc,$data){
     $app=$GLOBALS["app"];
+    extract($data);
     require($doc);
   }
 
@@ -30,9 +32,8 @@ class view
    * Gere les routes avec le refactorie
    * @return [type] [description]
    */
-  public function route(){
-    $app=$GLOBALS["app"];
-    $var= new \app\core\config("/".$app->root."/vendor/config.php");
+  public function send(){
+    $var= $this->config;
     $rules=$var->get("route");
     $uri = rtrim( dirname($_SERVER["SCRIPT_NAME"]), '/' );
     $uri = '/' . trim( str_replace( $uri, '', $_SERVER['REQUEST_URI'] ), '/' );

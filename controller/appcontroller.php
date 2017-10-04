@@ -1,24 +1,17 @@
 <?php
-namespace core\controller;
+namespace ms\controller;
 
 /**
  * Gere l'application
  */
 class appcontroller{
-  /**
-   * @var string $id [le ID du user]
-   */
-  public $id='';
 
   /**
-   * @var string $title [le titre de la page]
+   * @var string $title [Nom du projet]
    */
-  public $title;
+  public $nom;
 
-  /**
-   * @var string $app []
-   */
-  public $app;
+
 
 /**
  * la classe HTMl
@@ -31,15 +24,6 @@ class appcontroller{
    */
   public $root;
 
-  /**
-   * @var string $notfound [La page non trouve]
-   */
-  public $notfound;
-
-  /**
-   * @var string $user [La classe qui gere l'utilisateur]
-   */
-  public $user;
 
   /**
    * @var string $config [La class de configuration]
@@ -57,64 +41,79 @@ class appcontroller{
     public $tel;
 
     /**
-     * @var [class] $view [Class la vue]
+     * @var [class] $route [Gere les routes]
      */
-      public $view;
+      public $route;
+
+        public $session;
 
 
  /**
   * Le constructeur
-  * @param string $id     [id de l'utilisateur]
-  * @param string $user   [l chemin de la class qui gere utilisateur]
-  * @param string $chemin [le chemin vers le fichier de configuration]
-  * @param string $root [le dossier qui gere le projet]
+  * @param string $root     [le dossier dans app de travail]
+  * @param string $chemin [lien vers le fichier de configuration]
   */
-  public function __construct($id=null,$user=null,$chemin=null,$root=null){
-if($root!="") $this->root=$root;
-$this->html=new \app\core\model\html();
-$this->recup=new \app\core\recupval();
-$this->tel= new \app\core\tel();
-$this->view=new \app\core\view();
+  public function __construct($root=null,$chemin=null){
+    if($root=="") $root="home";
+    if($root!="") $this->root=$root;
     // Recupere les valeur dans le fichier config.php pour l'utiliser dans le projet
-    if($chemin=="") $chemin="/".$this->root."/vendor/config.php";
-  $this->config($chemin);
+    if($chemin=="") $chemin="app/".$this->root."/vendor/config.php";
 //-->
 
-    $session= new \app\core\model\session;
+$this->html=new \ms\view\html();
+$this->recup=new \ms\view\recupval();
+$this->tel= new \ms\controller\tel();
+$var=$this->config= new \ms\controller\config($chemin);
+
+$this->route=new \ms\view\route($var);
+  $session=$this->session= new \ms\controller\session();
 
 // Recupere le dernier lien chez l'utilisateur
     $lastlink="https://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
     if(($_SERVER["REQUEST_URI"]!="") && ($_SERVER["REQUEST_URI"]!="/index.php"))   $session->session("lastlink","Huxi",$lastlink);
     //--->
 
-
-    if($id==""){
-      $this->id=$session->show_session("id");
-      $id=$this->id;
-    }else{
-      $this->id=$id;
-      $session->session("id","",$id);
-    }
-
-      // Appele la fonction qui gere les utilisateurs
-    if($user!=""){
-      $this->user=new $user($id);
-    }
-    //--->
-
-
   }
 
-  /**
-   * Gere le fichier de configuration
-   * @param  string $chemin [le chemin vers le fichier de configuration]
-   * @param  string $sauv   [Verfie si on doit l'intsancier dans $this->config]
-   * @return [class]         [Retourne la classe]
-   */
-  public function config($chemin=null,$sauv=null){
-  $var= new \app\core\config($chemin);
-  if($sauv=="") $this->config=$var;
-  return $var;
+/**
+ * Creer architecture du framework
+ * @return [type] [description]
+ */
+  public function init(){
+
+    //On creer les dossier
+       mkdir("app", 0777);
+       mkdir("app/home", 0777);
+       mkdir("app/home/controller", 0777);
+       mkdir("app/home/model", 0777);
+       mkdir("app/home/view", 0777);
+       mkdir("app/home/vendor", 0777);
+//--->
+
+      // On creer le dossier de config
+      $confdoc = fopen('app/home/vendor/config.php', 'a');
+      $config_doc=file_get_contents("vendor/managesociety/framework/vendor/config.php");
+      fputs($confdoc, $config_doc);
+      fclose($confdoc);
+      //--->
+
+      //--->  // On creer le premier controler
+        $confdoc = fopen('app/home/controller/homectr.php', 'a');
+        $config_doc=file_get_contents("vendor/managesociety/framework/vendor/examplectr.php");
+        fputs($confdoc, $config_doc);
+        fclose($confdoc);
+        //--->
+
+        //--->  // On creer le premier controler
+          $confdoc = fopen('app/home/view/index.php', 'a');
+          $config_doc=file_get_contents("vendor/managesociety/framework/vendor/exampleview.php");
+          fputs($confdoc, $config_doc);
+          fclose($confdoc);
+          //--->
+
+
+      var_dump("Architecture do");
+      return true;
   }
 
 /**

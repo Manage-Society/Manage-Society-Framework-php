@@ -1,5 +1,5 @@
 <?php
-namespace core\controller;
+namespace ms\controller;
 
 /**
  * Le controller
