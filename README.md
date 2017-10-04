@@ -2,8 +2,8 @@ Manage-Society.com
 ------------------
 
 -Mettre dans votre index.php pour initialiser le framework:
-
-<?php
+<br>
+<?php <br>
 ini_set('display_errors', 1); <br>
 ini_set('log_errors', 1);<br>
 error_reporting(E_ALL);<br>
@@ -16,9 +16,9 @@ $app->init();<br>
 ?>
 <br><br>
 Apres avoir initialise vous allez recevoir un message de reussite.
-Vous pouvez maintenant mettre dans votre index.php le code:
-
-<?php
+Vous pouvez maintenant mettre dans votre index.php le code:<br>
+<br>
+<?php <br>
 ini_set('display_errors', 1); <br>
 ini_set('log_errors', 1);<br>
 error_reporting(E_ALL);<br>
