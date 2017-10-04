@@ -57,7 +57,7 @@ class appcontroller{
     if($root=="") $root="home";
     if($root!="") $this->root=$root;
     // Recupere les valeur dans le fichier config.php pour l'utiliser dans le projet
-    if($chemin=="") $chemin="app/".$this->root."/vendor/config.php";
+    if($chemin=="") $chemin="app/".$this->root."/asset/config.php";
 //-->
 
 $this->html=new \ms\view\html();
@@ -87,26 +87,26 @@ $this->route=new \ms\view\route($var);
        mkdir("app/home/controller", 0777);
        mkdir("app/home/model", 0777);
        mkdir("app/home/view", 0777);
-       mkdir("app/home/vendor", 0777);
+       mkdir("app/home/asset", 0777);
 //--->
 
       // On creer le dossier de config
-      $confdoc = fopen('app/home/vendor/config.php', 'a');
-      $config_doc=file_get_contents("vendor/managesociety/framework/vendor/config.php");
+      $confdoc = fopen('app/home/asset/config.php', 'a');
+      $config_doc=file_get_contents("vendor/managesociety/framework/asset/config.php");
       fputs($confdoc, $config_doc);
       fclose($confdoc);
       //--->
 
       //--->  // On creer le premier controler
         $confdoc = fopen('app/home/controller/homectr.php', 'a');
-        $config_doc=file_get_contents("vendor/managesociety/framework/vendor/examplectr.php");
+        $config_doc=file_get_contents("vendor/managesociety/framework/asset/examplectr.php");
         fputs($confdoc, $config_doc);
         fclose($confdoc);
         //--->
 
         //--->  // On creer le premier controler
           $confdoc = fopen('app/home/view/index.php', 'a');
-          $config_doc=file_get_contents("vendor/managesociety/framework/vendor/exampleview.php");
+          $config_doc=file_get_contents("vendor/managesociety/framework/asset/exampleview.php");
           fputs($confdoc, $config_doc);
           fclose($confdoc);
           //--->
