@@ -5,11 +5,15 @@
     "keywords": ["php", "Manage-Society", "framework", "Cyriaque ovaga"],
     "homepage": "https://github.com/Manage-Society/Manage-Society-Framework-php",
     "license": "Manage-Society.com",
+    "minimum-stability": "dev",
+    "prefer-stable" : true,
     "authors": [
         {
             "name": "Manage-Society",
             "email": "contact@manage-society.com"
         }
     ],
-    "require": {}
+    "require": {
+      "php": ">=5.5.9",
+    }
 }
