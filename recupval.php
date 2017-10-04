@@ -1,5 +1,5 @@
 <?php
-namespace app\core;
+namespace core;
 
 /**
  * Traite les informations de la vue au controller

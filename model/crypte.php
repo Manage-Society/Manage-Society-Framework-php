@@ -1,5 +1,5 @@
 <?php
-namespace app\core\model;
+namespace core\model;
 
 /**
  * Crypte une variable

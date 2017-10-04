@@ -1,5 +1,5 @@
 <?php
-namespace app\core;
+namespace core;
 
 /*
 La classe migration permet de faire des migrations de base de donnée

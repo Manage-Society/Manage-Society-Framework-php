@@ -1,5 +1,5 @@
 <?php
-namespace app\core;
+namespace core;
 
 /**
  * Utilitaire html, chercher plusieurs utilitaire
@@ -33,7 +33,7 @@ trait htmlutil{
     $this->html= new \app\core\model\html();
     $this->session= new \app\core\model\session();
     $this->recupval= new \app\core\recupval();
-  
+
   }
 
   /**

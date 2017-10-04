@@ -1,5 +1,5 @@
 <?php
-namespace app\core\model;
+namespace core\model;
 
 /**
  * [Il s'occupe des migration de base de donne]
