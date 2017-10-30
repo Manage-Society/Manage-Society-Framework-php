@@ -33,7 +33,7 @@ if(is_file('' . $class . '.php')){
   } else{
     $class=str_replace("ms","",$class);
     $class="vendor/managesociety/framework".$class;
-    require '' . $class . '.php';
+  if(is_file('' . $class . '.php'))  require '' . $class . '.php';
   }
 
 }
