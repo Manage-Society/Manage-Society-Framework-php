@@ -71,6 +71,8 @@ class apictr
         $params['controllerrequest'] =$this->_class;
         $params['data'] = json_encode($this->_valeur);
         $params['type_requete'] = "app_ext";
+        $params['serveur'] =  $this->_serveur;
+       
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $this->_api_url);
@@ -83,9 +85,9 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $result = curl_exec($ch);
-        
+        $first_reponse=$result;
     $result = @json_decode($result,true);
-
+   
 		if (curl_errno($ch)) {
 		    var_dump($result); echo '<br>';
    		    print curl_error($ch);
@@ -94,12 +96,12 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       
 
         if( $result == false || isset($result['success']) == false ) {
-             throw new \Exception('Request was not correct');
+            var_dump($first_reponse);
         }
 
 
         if( $result['success'] == false ) {
-          throw new \Exception($result['errormsg']);
+            var_dump($first_reponse);
         }
 
        return $result['data'];
