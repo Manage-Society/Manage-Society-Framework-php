@@ -49,6 +49,7 @@ class appcontroller{
 
         public $migration;
 
+        public $api_ms;
 
  /**
   * Le constructeur
@@ -67,6 +68,8 @@ $this->recup=new \ms\view\recupval();
 $this->tel= new \ms\controller\tel();
 $this->migration= new \ms\model\migration();
 $var=$this->config= new \ms\controller\config($chemin);
+
+$this->api_ms= new \ms\controller\apictr($var->get("api_ms"),$var->get("serveur_ms"));
 
 $this->route=new \ms\view\route($var);
   $session=$this->session= new \ms\controller\session();

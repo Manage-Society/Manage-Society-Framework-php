@@ -11,6 +11,8 @@ return array(
 "db_hostname"=>"127.0.0.1",
 "db_username"=>"",
 "db_mdp"=>"",
+"serveur_ms"=>"ms.demo",
+"api_ms"=>"callcenter",
 "nom_projet"=>"Manage-Society.com",
 "desc_projet"=>"Projet sur le framework Manage-Society.com",
 "db_datatable"=>"managesociety",

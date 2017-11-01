@@ -28,13 +28,13 @@ if(is_file('' . $class . '.php')){
 
 }else {
 
-  if(is_file('../' . $class . '.php')){
-    require '../' . $class . '.php';
-  } else{
+  // if(is_file('../' . $class . '.php')){
+  //   require '../' . $class . '.php';
+  // } else{
     $class=str_replace("ms","",$class);
     $class="vendor/managesociety/framework".$class;
   if(is_file('' . $class . '.php'))  require '' . $class . '.php';
-  }
+  // }
 
 }
 
