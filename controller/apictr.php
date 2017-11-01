@@ -72,6 +72,7 @@ class apictr
         $params['data'] = json_encode($this->_valeur);
         $params['type_requete'] = "app_ext";
         $params['serveur'] =  $this->_serveur;
+        $params['nom_app'] =  $this->_app_id;
        
 
     $ch = curl_init();
