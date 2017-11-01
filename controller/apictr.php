@@ -51,7 +51,7 @@ class apictr
      * @param [type] $data
      * @return void
      */
-    public function value($data){
+    public function value($data=null){
         $this->_valeur[]=$data;
        $reponse= $this->sendRequest();
         return $reponse;
